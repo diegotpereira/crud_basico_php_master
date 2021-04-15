@@ -51,4 +51,19 @@ class ProdutosController extends Controller
 
         return "Produto Atualizado com Sucesso!.";
     }
+    // função para exlusão de dados da tabela.
+    public function delete($id)
+    {
+        $produto = Produto::findOrFail($id);
+
+        return view('produtos.delete', ['produto' => '$produto']);
+    }
+    // função de confirmação de exclusão
+    public function destroy($id)
+    {
+        $produto = Produto::findOrFail($id);
+        $produto->delete();
+
+        return "Produto Excluído com Sucesso!.";
+    }
 }
